@@ -2,6 +2,7 @@
 host = 0.0.0.0
 port = 7125
 max_upload_size = 1024
+klippy_uds_address = ~/printer_data/comms/klippy.sock
 
 [file_manager]
 enable_object_processing = True
@@ -19,6 +20,7 @@ trusted_clients =
 	172.16.0.0/12
 	192.168.0.0/16
 	127.0.0.1
+	192.168.68.59
 	FE80::/10
 	::1/128
 
@@ -49,18 +51,26 @@ path = ~/klipper-led_effect
 origin = https://github.com/julianschill/klipper-led_effect.git
 is_system_service = False
 
-[update_manager client z_calibration]
-type = git_repo
-path = ~/klipper_z_calibration
-origin = https://github.com/protoloft/klipper_z_calibration.git
-install_script = install.sh
-
 [update_manager Klippain-ShakeTune]
 type = git_repo
-path = ~/klippain_shaketune
-channel = beta
 origin = https://github.com/Frix-x/klippain-shaketune.git
+path = ~/klippain_shaketune
+virtualenv = ~/klippy-env
+requirements = requirements.txt
+system_dependencies = system-dependencies.json
 primary_branch = main
 managed_services = klipper
+
+[update_manager beacon]
+type = git_repo
+channel = dev
+path = ~/beacon_klipper
+origin = https://github.com/beacon3d/beacon_klipper.git
+env = ~/klippy-env/bin/python
+requirements = requirements.txt
 install_script = install.sh
+is_system_service = False
+managed_services = klipper
+info_tags = 
+	desc=Beacon Surface Scanner
 
