@@ -31,12 +31,12 @@ mainsail_folder=~/mainsail
 #fluidd_folder=~/fluidd
 
 ### The branch of the repository that you want to save your config
-### By default that is 'main'
-branch=main
+### By default that is 'master''
+branch=master
 
 db_file=~/printer_data/database/moonraker-sql.db
 
-branch=main
+branch=master
 #####################################################################
 #####################################################################
 
